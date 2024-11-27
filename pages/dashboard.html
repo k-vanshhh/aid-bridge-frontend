@@ -1,0 +1,486 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard - Aid Bridge</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+            .dashboard-bg {
+                background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+                min-height: 100%;
+                width: 100%;
+            }
+
+            .nav-gradient {
+                background: linear-gradient(to right, #4F46E5, #7C3AED);
+            }
+
+            .donation-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                transition: transform 0.3s ease;
+            }
+
+            .donation-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .category-badge {
+                display: inline-block;
+                padding: 0.25rem 0.75rem;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                font-weight: 500;
+            }
+
+            .category-badge.food {
+                background-color: #FEF3C7;
+                color: #92400E;
+            }
+
+            .category-badge.education {
+                background-color: #DBEAFE;
+                color: #1E40AF;
+            }
+
+            .category-badge.healthcare {
+                background-color: #FCE7F3;
+                color: #9D174D;
+            }
+
+            .category-badge.shelter {
+                background-color: #D1FAE5;
+                color: #065F46;
+            }
+
+            .stats-card {
+                background: white;
+                border-radius: 1rem;
+                padding: 1.5rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .stats-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(to right, #4F46E5, #7C3AED);
+            }
+
+            .stats-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .donation-form {
+                background: white;
+                border-radius: 1rem;
+                padding: 2rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+
+            .gradient-btn {
+                background: linear-gradient(to right, #4F46E5, #7C3AED);
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border-radius: 0.5rem;
+                transition: all 0.3s ease;
+            }
+
+            .gradient-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+            }
+
+            .impact-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+                background: linear-gradient(135deg, #4F46E5, #7C3AED);
+                color: white;
+                font-size: 1.5rem;
+            }
+        </style>
+
+        <!-- LOGOUT BUTTON DESIGN-->
+        <style>
+            .logout-btn {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 16px;
+                background: linear-gradient(135deg, #4F46E5, #7C3AED);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 500;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .logout-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                background: linear-gradient(135deg, #4338CA, #6D28D9);
+            }
+            
+            .logout-btn:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .logout-btn i {
+                font-size: 1rem;
+            }
+            
+            /* Optional: Add a subtle shine animation */
+            .logout-btn::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(
+                    to right,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                transform: rotate(45deg);
+                transition: all 0.3s ease;
+                opacity: 0;
+            }
+            
+            .logout-btn:hover::after {
+                opacity: 1;
+                animation: shine 1.5s infinite;
+            }
+            
+            @keyframes shine {
+                from {
+                    transform: rotate(45deg) translateX(-200%);
+                }
+                to {
+                    transform: rotate(45deg) translateX(200%);
+                }
+            }
+            
+            /* For better touch interaction on mobile */
+            @media (max-width: 768px) {
+                .logout-btn {
+                    padding: 10px 20px;
+                }
+            }
+
+
+
+            /* footer ka css */
+            /* Add these styles to your existing CSS */
+/* Ensure body fills the viewport and removes padding/margin */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0; /* Removes any default margin */
+    padding: 0;
+}
+
+/* Main content area to grow and push footer down */
+main {
+    flex: 1;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    margin-top: auto; /* Ensures footer sticks to the bottom */
+}
+
+
+/* Add these styles to your existing CSS */
+.donations-list-container {
+    max-height: 600px; /* Adjust this height as needed */
+    overflow-y: auto;
+    padding-right: 10px; /* Add some padding for the scrollbar */
+}
+
+/* Custom scrollbar styling */
+.donations-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.donations-list-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.donations-list-container::-webkit-scrollbar-thumb {
+    background: #4F46E5;
+    border-radius: 4px;
+}
+
+.donations-list-container::-webkit-scrollbar-thumb:hover {
+    background: #7C3AED;
+}
+/* Add these rules to prevent horizontal scrolling */
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.nav-content {
+    padding: 0 1rem;
+}
+
+/* Make tables responsive */
+table {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Adjust padding for mobile */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    
+    .nav-content {
+        padding: 0 0.5rem;
+    }
+    
+    .stats-card {
+        margin: 0 0.5rem;
+    }
+}
+
+            </style>
+
+    </head>
+    <body class="dashboard-bg">
+        <script src="../js/auth.js"></script>
+        <!-- Navigation -->
+        <nav class="nav-transparent">.
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <span class="logo-text" style="font-size: 24px;">Dashboard</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/pages/about.html" class="nav-link">About Us</a>
+                    <!-- Pages Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            Pages <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/event-details" class="dropdown-item">
+                                <i class="fas fa-calendar-alt"></i> Event Details
+                            </a>
+                            
+                            <a href="/faq" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                        </div>
+                    </div>
+                    <a href="donation_details.html" class="nav-link">Donations</a>
+                    <a href="#causes" class="nav-link">Contact Us</a>
+                    
+                    <button id="logoutBtn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="nav-gradient shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16">
+                <div class="h-full flex justify-center items-center">
+                    <span id="userName" class="text-white"></span>
+                </div>
+            </div>
+        </nav>
+        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <!-- Stats Section -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="stats-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Total Donated</h3>
+                    <p class="text-2xl font-bold text-indigo-600 total-donated">$0.00</p>
+
+                </div>
+                <div class="stats-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Donations</h3>
+                    <p class="text-2xl font-bold text-indigo-600 donation-count">0</p>
+                </div>
+                <div class="stats-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Lives Impacted</h3>
+                    <p class="text-2xl font-bold text-indigo-600">127</p>
+                </div>
+                <div class="stats-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Countries</h3>
+                    <p class="text-2xl font-bold text-indigo-600">8</p>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Donation Form -->
+                <div class="lg:col-span-1">
+                    <div class="donation-form">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Enter product details</h3>
+                        <form id="donationForm" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Product name</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                                        <i class="fas" ></i>
+                                    </span>
+                                    <input type="text" id="name" required min="1" 
+                                        class="pl-8 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Product amount</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                                        <!-- <i class="fas fa-dollar-sign"></i> -->
+                                        <span class="rupee-sign" style="font-size: 24px; font-weight: bold;">₹</span>
+                                    </span>
+                                    <input type="number" id="amount" required min="1" 
+                                        class="pl-8 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                                <div class="relative">
+                                    <select id="category" required
+                                        class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="cloths">Cloths</option>
+                                        <option value="medicines">medicines</option>
+                                        <option value="amount">Amount</option>
+                                        <option value="books">Books</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Product description</label>
+                                <textarea id="description" rows="3" 
+                                    class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                            </div>
+                            <!-- Change your existing donation button to this -->
+                    <button onclick="openPaymentModal()" class="submit-btn">Make Donation</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Donations List -->
+                <div class="lg:col-span-2">
+                    <!-- Replace the existing donations list div with this -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Recent Donations</h3>
+                        <div id="donationsList" class="donations-list-container space-y-4">
+                            <!-- Donations will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <script src="../js/donations.js"></script>
+        
+        <!-- FOOTER -->
+        <!-- Replace your current footer with this -->
+        <footer style="background-color: #333; color: #fff; padding: 20px; text-align: center; font-size: 17px; margin-top: 4rem;">
+            <div style="margin-bottom: 10px;">
+                <a href="about.html" style="color: #fff; text-decoration: none; margin: 0 15px;">About Us</a>
+                <a href="contact-us.html" style="color: #fff; text-decoration: none; margin: 0 15px;">Contact Us</a>
+                <a href="faq.html" style="color: #fff; text-decoration: none; margin: 0 15px;">FAQ</a>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <span>&copy; Thapar University, All rights reserved.</span>
+            </div>
+            <div style="font-size: 16px;">
+                <span>Follow us on : </span>
+                <a href="#" style="color: #4e25d3; text-decoration: none; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: #bc0e93; text-decoration: none; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </footer>
+
+        <!--PAYMENT CARD  -->
+        <div id="paymentModal" class="payment-modal">
+            <div class="payment-container">
+                <h1 class="pay-title">Personal Information</h1>
+                <label>Name and Surname</label>
+                <input type="text" placeholder="John Doe" class="pay-input">
+                <label>Phone Number</label>
+                <input type="text" placeholder="+1 234 5678" class="pay-input">
+                <label>Address</label>
+                <input type="text" placeholder="Elton St 21 22-145" class="pay-input">
+                <h1 class="pay-title">Card Information</h1>
+                <div class="card-icons">
+                    <img src="../images/visa.jpg" width="40" alt="" class="card-icon">
+                    <img src="../images/mastercard.jpg" alt="" width="40" class="card-icon">
+                </div>
+                <input type="password" class="pay-input" placeholder="Card Number">
+                <div class="card-info">
+                    <input type="text" placeholder="mm" class="pay-input sm">
+                    <input type="text" placeholder="yyyy" class="pay-input sm">
+                    <input type="text" placeholder="cvv" class="pay-input sm">
+                </div>
+                <button class="pay-button" onclick="handleCheckout()">Checkout!</button>
+                <span class="close" onclick="closePaymentModal()">X</span>
+            </div>
+        </div>
+    </body>
+    </html>

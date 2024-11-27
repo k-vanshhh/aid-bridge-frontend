@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+  <style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #4F46E5, #7C3AED);
+        --secondary-gradient: linear-gradient(135deg, #3B82F6, #2563EB);
+        --accent-gradient: linear-gradient(135deg, #EC4899, #9333EA);
+        --primary-color: #4F46E5;
+        --text-primary: #1F2937;
+        --text-secondary: #4B5563;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: #F9FAFB;
+        color: var(--text-primary);
+        min-height: 100vh;
+    }
+
+    .nav-transparent {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .nav-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-gradient);
+        border-radius: 12px;
+        color: white;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .main-content {
+        padding: 7rem 2rem 2rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: white;
+    }
+
+    .donations-icon { background: var(--primary-gradient); }
+    .queries-icon { background: var(--secondary-gradient); }
+    .users-icon { background: var(--accent-gradient); }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+    }
+
+    .table-section {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #E5E7EB;
+    }
+
+    th {
+        font-weight: 600;
+        color: var(--text-secondary);
+        background: #F9FAFB;
+    }
+
+    .action-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .btn-primary {
+        background: var(--primary-gradient);
+        color: white;
+    }
+
+    .btn-secondary {
+        background: var(--secondary-gradient);
+        color: white;
+    }
+
+    .chart-container {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        height: 400px;
+    }
+
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .table-section {
+            overflow-x: auto;
+        }
+    }
+    
+/* Dark mode core styles */
+.dark {
+    background-color: #111827;
+    color: #f3f4f6;
+}
+
+/* Navigation bar dark mode */
+.dark .nav-transparent {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo and text adjustments */
+.dark .logo-text {
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Stat cards dark mode */
+.dark .stat-card {
+    background-color: #1f2937;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 1px solid #374151;
+}
+
+.dark .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark .stat-label {
+    color: #9ca3af;
+}
+
+.dark .stat-value {
+    color: #f3f4f6;
+}
+
+/* Table section dark mode */
+.dark .table-section {
+    background-color: #1f2937;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 1px solid #374151;
+}
+
+.dark .section-title {
+    color: #f3f4f6;
+}
+
+/* Table styles */
+.dark table th {
+    background-color: #111827;
+    color: #9ca3af;
+    border-bottom: 1px solid #374151;
+}
+
+.dark table td {
+    border-bottom: 1px solid #374151;
+    color: #f3f4f6;
+}
+
+.dark table tr:hover {
+    background-color: #283548;
+}
+
+/* Button styles in dark mode */
+.dark .action-btn {
+    border: 1px solid #374151;
+}
+
+.dark .btn-primary {
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    color: #ffffff;
+}
+
+.dark .btn-secondary {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    color: #ffffff;
+}
+
+.dark .btn-primary:hover,
+.dark .btn-secondary:hover {
+    filter: brightness(110%);
+}
+
+/* Chart container dark mode */
+.dark .chart-container {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+}
+
+/* Custom scrollbar for dark mode */
+.dark .table-container::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+.dark .table-container::-webkit-scrollbar-thumb {
+    background: #4b5563;
+}
+
+.dark .table-container::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Status badges dark mode */
+.dark .status-badge {
+    background-color: #374151;
+    color: #f3f4f6;
+}
+
+.dark .status-badge.pending {
+    background-color: #454a1f;
+    color: #fde68a;
+}
+
+.dark .status-badge.approved {
+    background-color: #064e3b;
+    color: #6ee7b7;
+}
+
+.dark .status-badge.rejected {
+    background-color: #7f1d1d;
+    color: #fca5a5;
+}
+
+/* Form elements dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+    background-color: #374151;
+    border: 1px solid #4b5563;
+    color: #f3f4f6;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+    border-color: #6366f1;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Modal dark mode */
+.dark .modal-content {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+}
+
+.dark .modal-header {
+    border-bottom: 1px solid #374151;
+}
+
+.dark .modal-footer {
+    border-top: 1px solid #374151;
+}
+  </style>
+
+  <!-- In your HTML head section -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body >
+  <nav class="nav-transparent">
+    <div class="nav-content">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <span class="logo-text">AID BRIDGE</span>
+        </div>
+        <div class="nav-actions">
+            <div id="user-role" class="mr-4 text-gray-900 font-semibold">
+                Role: <span id="role-display">Loading...</span>
+            </div>
+            
+            <button class="action-btn btn-secondary" id="toggle-dark-mode">
+                <i class="fas fa-moon"></i> Toggle Dark Mode
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon donations-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <div class="stat-value" id="total-donations">$0</div>
+            <div class="stat-label">Total Donations</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon queries-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <div class="stat-value" id="user-queries">0</div>
+            <div class="stat-label">User Queries</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon users-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-value" id="registered-users">0</div>
+            <div class="stat-label">Registered Users</div>
+        </div>
+    </div>
+
+    <div class="table-section">
+        <div class="section-header">
+            <h2 class="section-title">Recent Queries</h2>
+            
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="query-table-body">
+                <!-- Queries will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-section">
+        <div class="section-header">
+            <h2 class="section-title">Registered Users</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body">
+                <!-- Users will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+</main>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/AdminPanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aid Bridge - Empowering Communities Together</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+    
+</head>
+<body>
+    <div class="hero-section" style="background-image: url('images/index_bg.jpg'); background-size: cover; background-position: center; height: 100vh;">
+        <div class="particles-bg"></div>
+        <nav class="nav-transparent">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <a href="./index.html" class="logo-text" style="font-size:xx-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-style: bold;">Aid Bridge</a>
+                </div>
+                <div class="nav-links" >
+                    <a href="./pages/about.html" class="nav-link">About Us</a>
+                    
+                    <!-- Pages Dropdown -->
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" style="margin-right: -20px;">
+                        Pages <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="./pages/event_details.html" class="dropdown-item">
+                            <i class="fas fa-calendar-alt"></i> Event Details
+                        </a>
+                        
+                        <a href="pages/faq.html" class="dropdown-item">
+                            <i class="fas fa-question-circle"></i> FAQ
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Donations Dropdown -->
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" style="margin-right: -20px;">
+                        Donations <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="pages/donation_details.html" class="dropdown-item">
+                            <i class="fas fa-info-circle"></i> Donation Details
+                        </a>
+                        <a href="./index.html" class="dropdown-item">
+                            <i class="fas fa-heart"></i> Donate Now
+                        </a>
+                    </div>
+                </div>
+
+                    
+                    
+                    <a href="pages/contact_us.html" class="nav-link" >Contact Us</a>
+                    <a href="pages/register.html" class="nav-cta pulse-animation" >Join Us <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="login-container">
+            <div class="login-content">
+                <div class="left-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted by 10,000+ donors worldwide</span>
+                    </div>
+                    <h1 class="hero-title" >Empowering Communities,<br>Building Bridges of Hope</h1>
+                    <p class="hero-subtitle">Join our global community of changemakers who are transforming lives through meaningful donations and sustainable impact.</p>
+                    
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-heart-pulse"></i>
+                            </div>
+                            <span class="impact-number">50K+</span>
+                            <span class="impact-label">Lives Changed</span>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-hand-holding-dollar"></i>
+                            </div>
+                            <span class="impact-number">$2M+</span>
+                            <span class="impact-label">Donated</span>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <span class="impact-number">30+</span>
+                            <span class="impact-label">Countries</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slider">
+                        <div class="testimonial-card active" style="background-color: rgb(251, 237, 239);">
+                            <p>"Aid Bridge made it incredibly easy to support causes I care about."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-form-container floating-effect">
+                    <div class="form-background " style="background-color: transparent;"></div>
+                    <div class="login-form-content">
+                        <div class="form-header">
+                            <div class="icon-container">
+                                <div class="logo-content">
+                                    <!-- Replace fa-user-circle with a bridge icon -->
+                                    <i class="fas fa-hands-helping bridge-icon" style="margin-top: 5px;"></i>
+                                    <span class="logo-text" style="margin-top: -15px;">Aid<br>Bridge</span>
+                                </div>
+                            </div>
+                            <h2 class="form-title slide-in">Welcome Back</h2>
+                            <p class="form-subtitle fade-in">Continue your journey of giving</p>
+                        </div>
+                
+                        <form id="loginForm" class="auth-form">
+                            <div id="error-message" class="error-message hidden"></div>
+                            
+                            <div class="form-group slide-in">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope"></i> Email
+                                </label>
+                                <input id="email" type="email" required class="form-input" 
+                                       placeholder="Enter your email">
+                                <div class="input-highlight"></div>
+                            </div>
+                
+                            <div class="form-group slide-in">
+                                <label for="password" class="form-label">
+                                    <i class="fas fa-lock"></i> Password
+                                </label>
+                                <input id="password" type="password" required class="form-input" 
+                                       placeholder="Enter your password">
+                                <div class="input-highlight"></div>
+                            </div>
+                            <!-- Forgot Password Link -->
+                            <p class="forgot-password">
+                                <a href="#" id="forgot-password-link" style="color: #4CAF50;">Forgot Password?</a>
+                            </p>
+                
+                            <button type="submit" class="submit-btn scale-in">
+                                <span class="button-content">
+                                    <span class="button-text">Sign In</span>
+                                    <span class="button-icon">
+                                        <i class="fas fa-arrow-right btn-icon"></i>
+                                    </span>
+                                </span>
+                                <span class="button-background"></span>
+                                <span class="button-particles">
+                                    <span class="particle-1"></span>
+                                    <span class="particle-2"></span>
+                                    <span class="particle-3"></span>
+                                    <span class="particle-4"></span>
+                                </span>
+                            </button>
+                        </form>
+                
+                        <div class="form-divider fade-in">
+                            <span>OR</span>
+                        </div>
+                
+                        <div class="social-login slide-in">
+                            <button class="google-btn" id="google-btn" style="background-color: rgba(252, 248, 235, 0.366);">
+                                <i class="fab fa-google" ></i> Continue with Google
+                            </button>
+                        </div>
+                
+                        <p class="form-footer fade-in">
+                            New to Aid Bridge? 
+                            <a href="pages/register.html" class="text-link">
+                                Create an account <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+<div>
+    <section class="contact-map">
+        <div class="container-fluid">
+            <div class="google-map google-map__contact">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.9310764504426!2d76.36098282646363!3d30.352908653888345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39102f534a87b5c5%3A0xda1d3ed337e382b3!2sThapar%20University%2C%20Prem%20Nagar%2C%20Patiala%2C%20Punjab%20147004!5e0!3m2!1sen!2sin!4v1728379952540!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>               </div>
+            <!-- /.google-map -->
+        </div><!-- /.container-fluid -->
+    </section><!-- /.contact-map --> 
+    <footer style="background-color: #333; color: #fff; padding: 20px; text-align: center; font-size: 17px;">
+        <div style="margin-bottom: 10px;">
+            <a href="./pages/about.html" style="color: #fff; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="./pages/contact_us.html" style="color: #fff; text-decoration: none; margin: 0 15px;">Contact Us</a>
+            <a href="./pages/faq.html" style="color: #fff; text-decoration: none; margin: 0 15px;">FAQ</a>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <span>&copy; Thapar University, All rights reserved.</span>
+        </div>
+        <div style="font-size: 16px;">
+            <span>Follow us on : </span>
+            <a href="#" style="color: #4e25d3; text-decoration: none; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #bc0e93; text-decoration: none; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+</div>
+    
+    <!-- FOOTER -->
+
+    
+
+
+
+    <!-- JAVA SCRIPT -->
+
+    <script src="js/auth.js"></script>
+
+    <script>
+    // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all dropdown toggles
+            const dropdowns = document.querySelectorAll('.dropdown');
+        
+            // Add click event to each dropdown
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            });
+        
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+        </script>
+
+<script>
+    // Handling the Forgot Password Click Event
+    document.getElementById('forgot-password-link').addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+        
+        // Prompt for email address
+        const email = prompt("Please enter your email address to reset your password:");
+    
+        if (email) {
+            // Validate the email format (you can make this more sophisticated if needed)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(email)) {
+                // Call the backend to send the reset email
+                resetPassword(email);
+            } else {
+                alert("Please enter a valid email address.");
+            }
+        }
+    });
+    
+    // Function to reset password and send the email
+    const resetPassword = async (email) => {
+    try {
+        const response = await axios.post('https://aid-bridge-backend.onrender.com/api/auth/forgot-password', { email });
+        if (response.data.message === 'Password reset successfully, email sent') {
+            alert('A password reset email has been sent!');
+        } else {
+            alert(response.data.message || 'Unable to process your request.');
+        }
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        alert(error.response?.data?.message || 'Error resetting password. Please try again later.');
+    }
+};
+
+
+
+    </script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    
+</body>
+</html>

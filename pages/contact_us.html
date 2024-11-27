@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Aid Bridge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../css/styles.css" rel="stylesheet">
+   <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4F46E5, #7C3AED);
+            --secondary-gradient: linear-gradient(135deg, #3B82F6, #2563EB);
+            --accent-gradient: linear-gradient(135deg, #EC4899, #9333EA);
+            --primary-color: #4F46E5;
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .nav-transparent {
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: rotate(15deg);
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover {
+            background: rgba(79, 70, 229, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.75rem;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .hero-section {
+            height: 1250px;
+            position: relative;
+            padding: 8rem 0 6rem;
+            background: var(--primary-gradient);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(../images/about_bg.jpg);     
+            background-size: cover;      
+            animation: backgroundMove 30s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .contact-form-container {
+            background: white;
+            padding: 3.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.925rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #F9FAFB;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            background: white;
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover::after {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        footer {
+            background: #1F2937;
+            color: #9CA3AF;
+            padding: 3rem 0;
+            /* margin-top: 6rem; */
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: #E5E7EB;
+            font-size: 1.25rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        #messageDiv {
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .success {
+            background: #10B981;
+            color: white;
+        }
+
+        .error {
+            background: #EF4444;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-form-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-transparent">
+        <div class="nav-content" >
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <a href="../index.html" class="logo-text" style="font-size:xx-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-style: bold;">Aid Bridge</a>
+            </div>
+            <div class="nav-links" >
+                
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="./about.html" class="nav-link">About Us</a>
+                
+                
+                <a href="./event_details.html" class="nav-link" >Event Details</a>
+                <a href="./donation_details.html" class="nav-link" >Donation Details</a>
+                <a href="./register.html" class="nav-cta pulse-animation" >Join Us <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="hero-title">Contact Us</h1>
+        <p class="hero-subtitle">We're here to help and answer any question you might have. We look forward to hearing from you!</p>
+        <div class="login-container">
+            <div class="login-form-container">
+                <h2 style="font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 2rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Get in Touch
+                </h2>
+    
+                <!-- Message display div -->
+                <div id="messageDiv"></div>
+    
+                <form id="contactForm" class="login-form-container">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input 
+                            id="fullName" 
+                            name="fullName" 
+                            type="text" 
+                            required class="form-input" 
+                            placeholder="Enter your name"
+                            required 
+                            minlength="2" 
+                            maxlength="100">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input 
+                            id="email" 
+                            name="email" 
+                            type="email" 
+                            required class="form-input" 
+                            placeholder="Enter your email"
+                            required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            required 
+                            class="form-input" 
+                            rows="6" 
+                            placeholder="Write your message here"
+                            minlength="10" 
+                            maxlength="1000"></textarea>
+                    </div>
+    
+                    <button type="submit" id="submitButton" class="submit-btn">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    
+
+    <!-- FOOTER -->
+
+    <footer style="background-color: #333; color: #fff; padding: 20px; text-align: center; font-size: 17px;">
+        <div style="margin-bottom: 10px;">
+            <a href="about.html" style="color: #fff; text-decoration: none; margin: 0 15px;">About Us</a>
+            <a href="contact-us.html" style="color: #fff; text-decoration: none; margin: 0 15px;">Contact Us</a>
+            <a href="faq.html" style="color: #fff; text-decoration: none; margin: 0 15px;">FAQ</a>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <span>&copy; Thapar University, All rights reserved.</span>
+        </div>
+        <div style="font-size: 16px;">
+            <span>Follow us on : </span>
+            <a href="#" style="color: #4e25d3; text-decoration: none; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #bc0e93; text-decoration: none; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+
+    <script src="../js/contact.js"></script>
+
+</body>
+</html>

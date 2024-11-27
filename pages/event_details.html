@@ -1,0 +1,215 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Details - Aid Bridge</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            .fade-in {
+                opacity: 0;
+                transform: translateY(10px);
+                animation: fadeInUp 0.6s ease forwards;
+            }
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .event-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
+            }
+            .footer-socials i {
+                transition: transform 0.3s;
+            }
+            .footer-socials a:hover i {
+                transform: scale(1.2);
+                color: #ffcc00;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav-transparent">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <a href="../index.html" class="logo-text" style="font-size:xx-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-style: bold;">Aid Bridge</a>
+                </div>
+                <div class="nav-links" >
+                    <a href="./about.html" class="nav-link">About Us</a>
+                    
+                    <!-- Pages Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" style="margin-right: -20px;">
+                            Pages <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="./event_details.html" class="dropdown-item">
+                                <i class="fas fa-calendar-alt"></i> Event Details
+                            </a>
+                           
+                            <a href="./faq.html" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                        </div>
+                    </div>
+    
+                <!-- Donations Dropdown -->
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" style="margin-right: -20px;">
+                        Donations <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="./donation_details.html" class="dropdown-item">
+                            <i class="fas fa-info-circle"></i> Donation Details
+                        </a>
+                        <a href="../index.html" class="dropdown-item">
+                            <i class="fas fa-heart"></i> Donate Now
+                        </a>
+                    </div>
+                </div>
+    
+                    
+                    
+                    <a href="./contact_us.html" class="nav-link" >Contact Us</a>
+                    <a href="./register.html" class="nav-cta pulse-animation" >Join Us <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Hero Section -->
+        <div class="hero-section" style="padding: 2rem 0; background-image: url(../images/events_bg.jpg); background-size: 100% 100%; background-repeat: no-repeat;">
+            <div class="fade-in" style="text-align: center;">
+                <h1 class="hero-title text-white">Our Events</h1>
+                <p class="text-white">Stay updated on our past and upcoming events that make a difference</p>
+            </div>
+        
+    
+        <!-- Events Section Wrapper -->
+        <div class="login-container" style="padding: 2rem;">
+            <div class="events-wrapper">
+                <!-- Upcoming Events -->
+                <div class="login-form-container shadow-lg rounded-lg p-8 bg-white mb-10 fade-in">
+                    <h2 class="text-2xl font-bold text-indigo-700 mb-6">Upcoming Events</h2>
+                    <div class="impact-grid">
+                        <div class="impact-card event-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <span class="impact-number">Food Drive</span>
+                            <span class="impact-label">October 15, 2024 - City Park</span>
+                        </div>
+                        <div class="impact-card event-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <span class="impact-number">Health Camp</span>
+                            <span class="impact-label">November 10, 2024 - Community Center</span>
+                        </div>
+                        <div class="impact-card event-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <span class="impact-number">Tree Plantation</span>
+                            <span class="impact-label">December 5, 2024 - Riverside Park</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Past Events -->
+                <div class="login-form-container shadow-lg rounded-lg p-8 bg-white fade-in">
+                    <h2 class="text-2xl font-bold text-indigo-700 mb-6">Past Events</h2>
+                    <div class="impact-grid">
+                        <div class="impact-card event-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <span class="impact-number">Literacy Program</span>
+                            <span class="impact-label">August 5, 2024 - Local School</span>
+                        </div>
+                        <div class="impact-card event-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-medkit"></i>
+                            </div>
+                            <span class="impact-number">Medical Assistance</span>
+                            <span class="impact-label">September 12, 2024 - Rural Hospital</span>
+                        </div>
+                        <div class="impact-card event-card">
+                            <div class="impact-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <span class="impact-number">Community Support</span>
+                            <span class="impact-label">September 28, 2024 - Community Hall</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Footer -->
+        <footer style="background-color: #333; color: #fff; padding: 20px; text-align: center; font-size: 17px;">
+            <div style="margin-bottom: 10px;">
+                <a href="about.html" style="color: #fff; text-decoration: none; margin: 0 15px;">About Us</a>
+                <a href="contact_us.html" style="color: #fff; text-decoration: none; margin: 0 15px;">Contact Us</a>
+                <a href="faq.html" style="color: #fff; text-decoration: none; margin: 0 15px;">FAQ</a>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <span>&copy; Thapar University, All rights reserved.</span>
+            </div>
+            <div style="font-size: 16px;">
+                <span>Follow us on : </span>
+                <a href="#" style="color: #4e25d3; text-decoration: none; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: #bc0e93; text-decoration: none; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: #3b60c4; text-decoration: none; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </footer>
+    </body>
+    </html>
+    <script>
+        // Dropdown functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get all dropdown toggles
+                const dropdowns = document.querySelectorAll('.dropdown');
+            
+                // Add click event to each dropdown
+                dropdowns.forEach(dropdown => {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Close other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('active');
+                    });
+                });
+            
+                // Close dropdowns when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.dropdown')) {
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            </script>
+</body>
+</html>
