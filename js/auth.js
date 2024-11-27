@@ -14,16 +14,16 @@ function checkAuth() {
             //return;
         }
 
-        // Donor-specific dashboard access
-        if (window.location.pathname.includes('dashboard.html') && role !== 'donor') {
-            alert("Access restricted to donors only.");
-            window.location.href = '/index.html'; // Redirect non-donors away from donor-specific dashboard
-            return;
-        }
+        // // Donor-specific dashboard access
+        // if (window.location.pathname.includes('dashboard.html') && role !== 'donor') {
+        //     alert("Access restricted to donors only.");
+        //     window.location.href = '/index.html'; // Redirect non-donors away from donor-specific dashboard
+        //     return;
+        // }
 
         // If a user is on the index page and already authenticated, redirect to their respective dashboard
         if (window.location.pathname === '/index.html') {
-            window.location.href = role === 'admin' ? '/frontend/pages/admin.html' : '/frontend/pages/dashboard.html';
+            window.location.href = role === 'admin' ? '/pages/admin.html' : '/pages/dashboard.html';
         }
 
     } else if (!token && (window.location.pathname.includes('dashboard.html') || window.location.pathname.includes('admin.html'))) {
@@ -63,9 +63,9 @@ if (loginForm) {
 
                 // Redirect based on role
                 if (data.user.role === 'admin') {
-                    window.location.href = '/frontend/pages/admin.html'; // Admin dashboard
+                    window.location.href = '/pages/admin.html'; // Admin dashboard
                 } else if (data.user.role === 'donor') {
-                    window.location.href = '/frontend/pages/dashboard.html'; // Donor dashboard
+                    window.location.href = '/pages/dashboard.html'; // Donor dashboard
                 }
             } else {
                 errorDiv.textContent = data.message || 'Login failed';
@@ -107,9 +107,9 @@ if (registerForm) {
 
                 // Redirect based on role
                 if (data.user.role === 'admin') {
-                    window.location.href = '/frontend/pages/admin.html'; // Admin dashboard
+                    window.location.href = '/pages/admin.html'; // Admin dashboard
                 } else {
-                    window.location.href = '/frontend/pages/dashboard.html'; // Donor dashboard
+                    window.location.href = '/pages/dashboard.html'; // Donor dashboard
                 }
             } else {
                 errorDiv.textContent = data.message || 'Registration failed';
